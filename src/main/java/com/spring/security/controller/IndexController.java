@@ -24,12 +24,15 @@ public class IndexController {
         return "user";
     }
 
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
+    // @Secured("ROLE_ADIN")
     @ResponseBody
     @GetMapping("/admin")
     public String admin() {
         return "admin";
     }
 
+    // @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
     @ResponseBody
     @GetMapping("/manager")
     public String manager() {
@@ -51,4 +54,6 @@ public class IndexController {
         userService.join(user);
         return "redirect:/login";
     }
+
+
 }

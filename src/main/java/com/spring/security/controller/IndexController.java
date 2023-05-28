@@ -30,13 +30,11 @@ public class IndexController {
         return "manager";
     }
 
-    @ResponseBody
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    @ResponseBody
     @GetMapping("/join")
     public String join() {
         return "join";

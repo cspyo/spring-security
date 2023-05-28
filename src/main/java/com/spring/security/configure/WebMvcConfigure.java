@@ -1,4 +1,4 @@
-package com.spring.security.config;
+package com.spring.security.configure;
 
 import org.springframework.boot.web.servlet.view.MustacheViewResolver;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebMvcConfig implements WebMvcConfigurer {
+public class WebMvcConfigure implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         MustacheViewResolver resolver = new MustacheViewResolver();

@@ -1,11 +1,17 @@
 package com.spring.security.controller;
 
+import com.spring.security.model.User;
+import com.spring.security.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@RequiredArgsConstructor
 @Controller
 public class IndexController {
+    private final UserService userService;
 
     @GetMapping({"", "/"})
     public String index() {
@@ -40,9 +46,9 @@ public class IndexController {
         return "join";
     }
 
-    @ResponseBody
-    @GetMapping("/joinProc")
-    public String joinProc() {
-        return "회원가입 완료됨!";
+    @PostMapping("/joinProc")
+    public String joinProc(User user) {
+        userService.join(user);
+        return "redirect:/login";
     }
 }

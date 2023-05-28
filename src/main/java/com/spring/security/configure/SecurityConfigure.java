@@ -23,8 +23,8 @@ public class SecurityConfigure {
         http.authorizeRequests()
                 .antMatchers("/user/**").authenticated()
                 .antMatchers("/manager/**")
-                .access("hasRole('ADMIN') or hasRole('MANAGER')")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .access("hasRole('ADMIN') or hasRole('MANAGE')")
+                .antMatchers("/admin/**").hasRole("ADMIN") // 실제 role String 필드에는 ("ROLE_ADMIN")처럼 접두어가 붙어야 인식
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

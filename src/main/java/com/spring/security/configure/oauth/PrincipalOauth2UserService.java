@@ -1,10 +1,7 @@
 package com.spring.security.configure.oauth;
 
 import com.spring.security.configure.auth.PrincipalDetails;
-import com.spring.security.configure.oauth.provider.FacebookUserInfo;
-import com.spring.security.configure.oauth.provider.GoogleUserInfo;
-import com.spring.security.configure.oauth.provider.NaverUserInfo;
-import com.spring.security.configure.oauth.provider.OAuth2UserInfo;
+import com.spring.security.configure.oauth.provider.*;
 import com.spring.security.model.User;
 import com.spring.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +33,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         // -> AccessToken 으로 userRequest 정보 가져옴 -> loadUser 함수로 회원 프로필을 받아줌
         System.out.println("userRequest : " + oAuth2User.getAttributes());
 
-
         // 강제 회원가입 시키기 (OAuth 에서 받은 정보로 회원 정보 생성하고 DB에 저장)
         String provider = userRequest.getClientRegistration().getRegistrationId(); // google
         Map<String, Object> attributes = oAuth2User.getAttributes();
@@ -50,6 +46,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         } else if (provider.equals("naver")){
             System.out.println("네이버 로그인 요청");
             oAuth2UserInfo = new NaverUserInfo(attributes);
+        } else if (provider.equals("kakao")){
+            System.out.println("카카오 로그인 요청");
+            oAuth2UserInfo = new KakaoUserInfo(attributes);
         } else {
             System.out.println("지원하지 않는 형식의 로그인입니다.");
         }

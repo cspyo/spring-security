@@ -32,3 +32,10 @@ spring:
             scope:
               - email
               - profile
+
+          facebook:
+            client-id: ${CLIENT_ID_FACEBOOK_DEV}
+            client-secret: ${CLIENT_SECRET_FACEBOOK_DEV}
+            scope:
+              - email
+              - public_profile

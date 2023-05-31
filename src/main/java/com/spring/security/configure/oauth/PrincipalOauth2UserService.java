@@ -3,6 +3,7 @@ package com.spring.security.configure.oauth;
 import com.spring.security.configure.auth.PrincipalDetails;
 import com.spring.security.configure.oauth.provider.FacebookUserInfo;
 import com.spring.security.configure.oauth.provider.GoogleUserInfo;
+import com.spring.security.configure.oauth.provider.NaverUserInfo;
 import com.spring.security.configure.oauth.provider.OAuth2UserInfo;
 import com.spring.security.model.User;
 import com.spring.security.repository.UserRepository;
@@ -46,6 +47,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         } else if (provider.equals("facebook")) {
             System.out.println("페이스북 로그인 요청");
             oAuth2UserInfo = new FacebookUserInfo(attributes);
+        } else if (provider.equals("naver")){
+            System.out.println("네이버 로그인 요청");
+            oAuth2UserInfo = new NaverUserInfo(attributes);
         } else {
             System.out.println("지원하지 않는 형식의 로그인입니다.");
         }
